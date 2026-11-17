@@ -16,11 +16,19 @@ cd smarthome-backend
 ```bash
 winget install Casey.Just
 ```
-Hiermee kan je dotnet scripts runnen gedefineerd in de `justfile` file
+Hiermee kan je scripts runnen gedefineerd in de `justfile` file
 
-### 3. Start de API
+### 3. Download docker
+windows: https://docs.docker.com/desktop/setup/install/windows-install/
+
+### 4. Start de database
+```bash
+just db-up
+```
+
+### 5. Start de API
 ```bash
 just run
 ```
 
-- Open de swagger UI -> `http://localhost:5100/swagger/index.html`
+- Open de swagger UI: [**klik hier**](http://localhost:5100/swagger/index.html)

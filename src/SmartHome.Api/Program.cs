@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+
+using SmartHome.Api;
 using SmartHome.Api.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +10,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddSingleton<UrbanApiPoller>();
 
 var app = builder.Build();
 
