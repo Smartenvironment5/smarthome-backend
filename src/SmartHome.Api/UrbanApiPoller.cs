@@ -1,25 +1,22 @@
-﻿namespace SmartHome.Api;
+﻿using System.Diagnostics;
 
-public class UrbanApiPoller(ILogger<UrbanApiPoller> logger) : BackgroundService
+using SmartHome.Api.Clients;
+
+namespace SmartHome.Api;
+
+public class UrbanApiPoller(UrbanApiClient client, ILogger<UrbanApiPoller> logger) : BackgroundService
 {
-	private static HttpClient Client = new() { BaseAddress = new Uri("https://urban-sense-api.azure-api.net/urban-sense"), };
-
-	static UrbanApiPoller()
-	{
-		Client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "0e795a8ef02f4de4aa54f192ff9b8066");
-	}
-	
 	public UrbanData? Latest { get; private set; }
-	
+
 	protected override async Task ExecuteAsync(CancellationToken ct)
 	{
-		using var timer = new PeriodicTimer(TimeSpan.FromSeconds(60));
+		using var timer = new PeriodicTimer(TimeSpan.FromSeconds(30));
 		do
 		{
 			try
 			{
-				Latest = await Client.GetFromJsonAsync<UrbanData>("devices/urban-sense-rijswijk-01/latest", ct);
-				if (Latest != null) logger.LogInformation(Latest.ToString());
+				Latest = await client.GetLatestAsync("urban-sense-rijswijk-01", ct);
+				if (Latest != null) logger.LogInformation("Latest: {Data}", Latest);
 			}
 			catch (Exception ex) when (ex is not OperationCanceledException)
 			{
