@@ -8,8 +8,16 @@ using SmartHome.Api.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<AppDbContext>(options =>
-	options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
+if (builder.Environment.IsDevelopment())
+{
+	builder.Services.AddDbContext<AppDbContext>(options =>
+		options.UseNpgsql(builder.Configuration.GetConnectionString("Development")));
+}
+else
+{
+	builder.Services.AddDbContext<AppDbContext>(options =>
+		options.UseNpgsql(builder.Configuration["Database:ConnectionString"]));
+}
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
