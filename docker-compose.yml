@@ -1,6 +1,6 @@
 ﻿services:
     db:
-        image: mcr.microsoft.com/mssql/server:2022-latest
+        image: postgres
         container_name: smarthome-db
         restart: unless-stopped
         environment:
