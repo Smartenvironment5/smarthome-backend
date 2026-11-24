@@ -24,3 +24,13 @@ db-up:
 
 db-down:
     docker compose down
+    
+db-reset:
+	docker compose down -v
+	docker compose up -d --wait
+
+migrate name:
+	dotnet ef migrations add {{name}} --project src/SmartHome.Api
+
+db-update:
+	dotnet ef database update --project src/SmartHome.Api
