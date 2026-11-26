@@ -41,11 +41,7 @@ just run
 
 packages commands:
 
-dotnet add package Microsoft.Extensions.Validation --version 10.0.0
-dotnet add package Microsoft.AspNetCore.OpenApi --version 10.0.0
-dotnet add package Swashbuckle.AspNetCore.SwaggerUI --version 10.0.0
-dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL --version 10.0.0
-dotnet add package Microsoft.EntityFrameworkCore.Design --version 10.0.0
-
 maak smarthome aan in pgadmin en voer dit uit in de terminal
+```bash
 dotnet user-secrets set "ConnectionStrings:smarthome" "Host=localhost;Port=5432;Database=smarthome;Username=JOUW_USERNAME;Password=JOUW_WACHTWOORD"
+```
