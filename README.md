@@ -1,4 +1,4 @@
-# Smarthome backend API
+# SmartHome backend API
 
 ## Tech stack
 - Minimal API
@@ -8,8 +8,8 @@
 
 ### 1. Clone de repository
 ```bash
-git clone https://github.com/Smartenvironment5/smarthome-backend
-cd smarthome-backend
+git clone https://github.com/Smartenvironment5/SmartHome-backend
+cd SmartHome-backend
 ```
 
 ### 2. Set de api key
@@ -37,3 +37,4 @@ just run
 ```
 
 - Open de swagger UI: [**klik hier**](http://localhost:5100/swagger/index.html)
+/..
