@@ -11,10 +11,10 @@ build:
     dotnet build --no-restore
 
 run:
-    dotnet run --project src/SmartHome.Api
+    dotnet run --project SmartHome.Api
 
 watch:
-    dotnet watch --project src/SmartHome.Api
+    dotnet watch --project SmartHome.Api
 
 test:
     dotnet test
